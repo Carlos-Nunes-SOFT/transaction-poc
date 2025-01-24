@@ -4,10 +4,12 @@ import com.transaction.micro.demo.application.dtos.TransactionDto;
 import com.transaction.micro.demo.application.mapper.TransactionMapper;
 import com.transaction.micro.demo.domain.Transaction;
 import com.transaction.micro.demo.infrastructure.repository.TransactionRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class TransactionQueryHandler {
 
     private TransactionRepository transactionRepository;
