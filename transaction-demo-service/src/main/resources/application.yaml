@@ -1,24 +1,15 @@
 spring:
     application:
-        name: TransactionDemo
+        name: transaction-demo
+
+    config:
+        import: optional:configserver:http://localhost:8888
 
     cloud:
         config:
-            import-check:
-                enabled: false
-
-    data:
-        mongodb:
-            uri: mongodb://109.123.244.12:30914/transaction?authSource=transaction&retryWrites=false
-            database: transaction
-            
-        config:
-            import: optional:configserver:http://localhost:8888
-
-server:
-    port: 8081
-
+            uri: http://localhost:8888
+            name: transaction-demo
+            fail-fast: true
 logging:
     level:
-        org.springframework.data.mongodb.core.MongoTemplate: DEBUG
-        org.springframework.data.mongodb.core.query: TRACE
+        root: INFO
