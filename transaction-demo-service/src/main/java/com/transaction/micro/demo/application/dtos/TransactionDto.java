@@ -2,14 +2,16 @@ package com.transaction.micro.demo.application.dtos;
 
 import com.transaction.micro.demo.domain.enums.TransactionType;
 
+import java.time.LocalDateTime;
+
 public class TransactionDto {
     private Long userId;
-    private Long id;
+    private String id;
     private Integer amount;
-    private TransactionType type;
-    private String timestamp;
+    private String type;
+    private LocalDateTime timestamp;
 
-    public TransactionDto(Long userId, Long id, Integer amount, TransactionType type, String timestamp) {
+    public TransactionDto(Long userId, String id, Integer amount, String type, LocalDateTime timestamp) {
         this.userId = userId;
         this.id = id;
         this.amount = amount;
@@ -17,11 +19,31 @@ public class TransactionDto {
         this.timestamp = timestamp;
     }
 
-    public Long getId() {
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public TransactionType getType() {
+    public String getType() {
         return type;
     }
 
@@ -33,7 +55,7 @@ public class TransactionDto {
         return userId;
     }
 
-    public String getTimeStamp() {
+    public LocalDateTime getTimeStamp() {
         return timestamp;
     }
 }

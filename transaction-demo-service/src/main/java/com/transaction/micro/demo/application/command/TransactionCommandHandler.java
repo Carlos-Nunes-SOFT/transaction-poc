@@ -25,7 +25,7 @@ public class TransactionCommandHandler {
     @Autowired
     private TransactionBuilder transactionBuilder;
 
-    @Transactional
+    //@Transactional
     public TransactionDto createTransaction(Long userId, CreateTransactionCommand request){
         logger.info("Received request to create transaction: userId={}, amount={}, type={}" +
                 userId, request.amount, request.type);

@@ -1,14 +1,18 @@
 package com.transaction.micro.demo.domain;
 
 import com.transaction.micro.demo.domain.enums.TransactionType;
+import org.bson.types.ObjectId;
+import org.springframework.cglib.core.Local;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.time.LocalDateTime;
 
 @Document(collection = "transaction")
 public class Transaction {
 
     @Id
-    private String id;
+    private ObjectId id;
 
     private Integer amount;
 
@@ -16,15 +20,26 @@ public class Transaction {
 
     private Long userId;
 
+    private LocalDateTime timestamp;
+
     public Transaction(){}
 
     public Transaction(Long userId, Integer amount, TransactionType type) {
         this.userId = userId;
         this.amount = amount;
         this.type = type;
+        this.timestamp = LocalDateTime.now();
     }
 
-    public void setId(String id) {
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -40,7 +55,7 @@ public class Transaction {
         return userId;
     }
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
