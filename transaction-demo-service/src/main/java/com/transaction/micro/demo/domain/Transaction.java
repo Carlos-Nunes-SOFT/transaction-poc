@@ -1,23 +1,19 @@
 package com.transaction.micro.demo.domain;
 
 import com.transaction.micro.demo.domain.enums.TransactionType;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Positive;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity(name = "transaction")
+@Document(collection = "transaction")
 public class Transaction {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
-    @Positive(message = "Amount should be greater than zero.")
     private Integer amount;
 
-    @Enumerated(EnumType.STRING)
     private TransactionType type;
 
-    @Column(nullable = false)
     private Long userId;
 
     public Transaction(){}
@@ -28,7 +24,7 @@ public class Transaction {
         this.type = type;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -44,7 +40,7 @@ public class Transaction {
         return userId;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
