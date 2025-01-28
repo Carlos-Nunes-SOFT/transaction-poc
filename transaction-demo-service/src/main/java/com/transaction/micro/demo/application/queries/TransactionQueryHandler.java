@@ -1,6 +1,7 @@
 package com.transaction.micro.demo.application.queries;
 
 import com.transaction.micro.demo.application.dtos.TransactionDto;
+import com.transaction.micro.demo.application.mapper.CustomTransactionMapper;
 import com.transaction.micro.demo.application.mapper.TransactionMapper;
 import com.transaction.micro.demo.domain.Transaction;
 import com.transaction.micro.demo.infrastructure.repository.TransactionRepository;
@@ -13,9 +14,9 @@ import java.util.stream.Collectors;
 public class TransactionQueryHandler {
 
     private TransactionRepository transactionRepository;
-    private TransactionMapper transactionMapper;
+    private CustomTransactionMapper transactionMapper;
 
-    public TransactionQueryHandler(TransactionRepository transactionRepository, TransactionMapper transactionMapper) {
+    public TransactionQueryHandler(TransactionRepository transactionRepository, CustomTransactionMapper transactionMapper) {
         this.transactionRepository = transactionRepository;
         this.transactionMapper = transactionMapper;
     }

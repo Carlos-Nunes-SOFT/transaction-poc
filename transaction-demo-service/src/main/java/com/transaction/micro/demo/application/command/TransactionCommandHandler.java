@@ -1,6 +1,7 @@
 package com.transaction.micro.demo.application.command;
 
 import com.transaction.micro.demo.application.dtos.TransactionDto;
+import com.transaction.micro.demo.application.mapper.CustomTransactionMapper;
 import com.transaction.micro.demo.application.mapper.TransactionMapper;
 import com.transaction.micro.demo.domain.Transaction;
 import com.transaction.micro.demo.domain.builder.TransactionBuilder;
@@ -20,12 +21,11 @@ public class TransactionCommandHandler {
     private TransactionRepository transactionRepository;
 
     @Autowired
-    private TransactionMapper transactionMapper;
+    private CustomTransactionMapper transactionMapper;
 
     @Autowired
     private TransactionBuilder transactionBuilder;
 
-    //@Transactional
     public TransactionDto createTransaction(Long userId, CreateTransactionCommand request){
         logger.info("Received request to create transaction: userId={}, amount={}, type={}" +
                 userId, request.amount, request.type);
