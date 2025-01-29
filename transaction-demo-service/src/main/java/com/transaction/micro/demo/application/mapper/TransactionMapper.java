@@ -11,6 +11,7 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
 public interface TransactionMapper {
+    //Mapper build; Ver estruturas alternativas para o mapper
 
     TransactionMapper INSTANCE = Mappers.getMapper(TransactionMapper.class);
 
