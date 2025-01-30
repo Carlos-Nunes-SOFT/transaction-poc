@@ -22,15 +22,13 @@ public class TransactionController {
     }
 
     @GetMapping("/transaction/transactions")
-    public List<TransactionDto> getTransactionsByUserId(@RequestParam(name = "userId") String encodedUserId){
-        Long userId = EncodingUtils.decode(encodedUserId);
+    public List<TransactionDto> getTransactionsByUserId(@RequestParam(name = "userId") Long userId){
         return transactionQueryHandler.getTransactionsByUserId(new GetTransactionsByUserIdQuery(userId));
     }
 
     @PostMapping("/transaction/execute-transaction")
-    public TransactionDto createTransaction(@RequestParam(name = "userId") String encodedUserId,
+    public TransactionDto createTransaction(@RequestParam(name = "userId") Long userId,
                                             @RequestBody CreateTransactionCommand request) {
-        Long userId = EncodingUtils.decode(encodedUserId);
         return this.transactionCommandHandler.createTransaction(userId, request);
     }
 }
